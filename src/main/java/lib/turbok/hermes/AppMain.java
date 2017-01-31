@@ -18,12 +18,12 @@ class AppMain
         Logs.initDefault(null, "Hermes");
         Logs.addConsoleLogger();
 
-        serverMain = new HermesServer();
+        // serverMain = new HermesServer();
         sslServerMain = new HermesServer();
         
         try
         {
-            serverMain.start(9696, false, false);
+            // serverMain.start(9696, false, false);
             sslServerMain.start(9697, true, false);
             
             startConsole();
