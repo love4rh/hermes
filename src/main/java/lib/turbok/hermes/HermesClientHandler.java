@@ -56,20 +56,17 @@ public class HermesClientHandler extends SimpleChannelInboundHandler<WebSocketFr
         if( frame instanceof TextWebSocketFrame )
         {
             long sTick = System.currentTimeMillis();
-            
+
             String msgText = ((TextWebSocketFrame) frame).text();
-            
-            Logs.writeInfo("RECEIVE", ctx.channel(), msgText);
-            
             JsonObject jsonObject = new JsonParser().parse(msgText).getAsJsonObject();
-            
             String type = jsonObject.get("type").getAsString();
-            
             StringBuilder sb = new StringBuilder();
             
             if( "hello".equals(type) )
             {
                 _guid = CM.push(this);
+                
+                Logs.writeInfo("HELLO", ctx.channel(), _guid);
 
                 sb.append("{\"type\":\"hello\"")
                   .append(",\"id\":\"").append(_guid).append("\"}");
@@ -104,6 +101,8 @@ public class HermesClientHandler extends SimpleChannelInboundHandler<WebSocketFr
                 
                 sb.append("{\"type\":\"send\"")
                   .append(",\"code\":").append(rCode).append("}");
+                
+                Logs.writeInfo("SEND", ctx.channel(), rguid, rCode);
             }
 
             send( sb.toString() );
