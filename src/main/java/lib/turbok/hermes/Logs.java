@@ -225,7 +225,7 @@ public class Logs
         instance().write(FATAL, args);
     }
     
-    public static void writeTrace(Exception e)
+    public static void writeTrace(Throwable e)
     {
         StackTraceElement[] elem = e.getStackTrace();
         

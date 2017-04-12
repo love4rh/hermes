@@ -7,7 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <name>Hermes</name>
-  <url>http://www.tool4.us/hermes</url>
+  <url>https://www.tool4.us</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
